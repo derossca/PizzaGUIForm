@@ -38,12 +38,38 @@ public class PizzaGUIFrame extends JFrame {
 
     public PizzaGUIFrame() {
         createCenterFrame();
+        setLayout(new BorderLayout());
 
         mainPnl = new JPanel();
-        mainPnl.setLayout(new BorderLayout());
+        mainPnl.setLayout(new GridBagLayout());
 
+
+        GridBagConstraints grid = new GridBagConstraints();
+
+        grid.gridx = 0;
+        grid.gridy = 1;
         createCrustPanel();
-        mainPnl.add(crustPnl, BorderLayout.EAST);
+        mainPnl.add(crustPnl, grid);
+
+        grid.gridx = 1;
+        grid.gridy = 1;
+        createSizePanel();
+        mainPnl.add(sizePnl);
+
+        grid.gridx = 2;
+        grid.gridy = 1;
+        createToppingsPanel();
+        mainPnl.add(toppingsPnl, grid);
+
+        grid.gridx = 0;
+        grid.gridy = 0;
+        createOrderPanel();
+        mainPnl.add(orderPnl, grid);
+
+        grid.gridx = 1;
+        grid.gridy = 0;
+        createControlPanel();
+        mainPnl.add(controlPnl, grid);
 
         add(mainPnl, BorderLayout.CENTER);
         setTitle("Pizza Order");
@@ -74,7 +100,16 @@ public class PizzaGUIFrame extends JFrame {
     }
 
     private void createSizePanel() {
+        sizePnl = new JPanel();
+        sizePnl.setBorder(new TitledBorder(new EtchedBorder(), "Pizza Size"));
 
+        pizzaSizeCB = new JComboBox();
+        pizzaSizeCB.addItem("Small");
+        pizzaSizeCB.addItem("Medium");
+        pizzaSizeCB.addItem("Large");
+        pizzaSizeCB.addItem("Super");
+
+        sizePnl.add(pizzaSizeCB);
     }
 
     private void createToppingsPanel() {
