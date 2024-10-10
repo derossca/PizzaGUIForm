@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class PizzaGUIFrame extends JFrame {
 
@@ -30,7 +31,7 @@ public class PizzaGUIFrame extends JFrame {
 
     JButton quitBtn;
     JButton clearBtn;
-    JButton dispalyOrderBtn;
+    JButton displayOrderBtn;
 
     JOptionPane quitPane;
 
@@ -144,12 +145,15 @@ public class PizzaGUIFrame extends JFrame {
         controlPnl = new JPanel();
         controlPnl.setBorder(new TitledBorder(new EtchedBorder(), "Controls"));
 
+        displayOrderBtn = new JButton("Display Order");
+        displayOrderBtn.addActionListener(e -> {
 
+        });
+
+        clearBtn = new JButton("Clear");
+        quitBtn = new JButton("Quit");
     }
 
-    private void getOrder() {
-
-    }
 
     private void createCenterFrame(){
         //screen dimensions
