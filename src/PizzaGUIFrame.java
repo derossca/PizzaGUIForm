@@ -11,6 +11,24 @@ public class PizzaGUIFrame extends JFrame {
     JPanel receiptPnl;
     JPanel controlPnl;
 
+    JRadioButton thinCrustRB;
+    JRadioButton regCrustRB;
+    JRadioButton deepDishCrustRB;
+
+    JComboBox pizzaSizeCB;
+
+    JCheckBox sourWormsCB;
+    JCheckBox butterBeerCB;
+    JCheckBox skittlesCB;
+    JCheckBox zombieBrainsCB;
+    JCheckBox monsterGutsCB;
+    JCheckBox spidersCB;
+
+    JTextArea orderTA;
+    JScrollPane scroll;
+
+    JButton quitBtn;
+    JButton dispalyOrderBtn;
 
 
     private void createCenterFrame(){
