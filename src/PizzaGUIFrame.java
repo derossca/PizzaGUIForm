@@ -105,13 +105,14 @@ public class PizzaGUIFrame extends JFrame {
     private void createToppingsPanel() {
         toppingsPnl = new JPanel();
         toppingsPnl.setBorder(new TitledBorder(new EtchedBorder(), "Toppings"));
+        toppingsPnl.setLayout(new BoxLayout(toppingsPnl, BoxLayout.Y_AXIS));
 
-        sourWormsCB = new JCheckBox();
-        butterBeerCB = new JCheckBox();
-        skittlesCB = new JCheckBox();
-        zombieBrainsCB = new JCheckBox();
-        monsterGutsCB = new JCheckBox();
-        spidersCB = new JCheckBox();
+        sourWormsCB = new JCheckBox("Sour Worms");
+        butterBeerCB = new JCheckBox("Butterbeer");
+        skittlesCB = new JCheckBox("Skittles");
+        zombieBrainsCB = new JCheckBox("Zombie Brains");
+        monsterGutsCB = new JCheckBox("Monster Guts");
+        spidersCB = new JCheckBox("Spiders");
 
         toppingsPnl.add(sourWormsCB);
         toppingsPnl.add(butterBeerCB);
