@@ -42,35 +42,24 @@ public class PizzaGUIFrame extends JFrame {
         setLayout(new BorderLayout());
 
         mainPnl = new JPanel();
-        mainPnl.setLayout(new GridBagLayout());
+        mainPnl.setLayout(new BorderLayout());
 
 
-        GridBagConstraints grid = new GridBagConstraints();
 
-        grid.gridx = 0;
-        grid.gridy = 1;
         createCrustPanel();
-        mainPnl.add(crustPnl, grid);
+        mainPnl.add(crustPnl, BorderLayout.NORTH);
 
-        grid.gridx = 1;
-        grid.gridy = 1;
         createSizePanel();
-        mainPnl.add(sizePnl);
+        mainPnl.add(sizePnl, BorderLayout.EAST);
 
-        grid.gridx = 2;
-        grid.gridy = 1;
         createToppingsPanel();
-        mainPnl.add(toppingsPnl, grid);
+        mainPnl.add(toppingsPnl, BorderLayout.WEST);
 
-        grid.gridx = 0;
-        grid.gridy = 0;
         createOrderPanel();
-        mainPnl.add(orderPnl, grid);
+        mainPnl.add(orderPnl, BorderLayout.CENTER);
 
-        grid.gridx = 1;
-        grid.gridy = 0;
         createControlPanel();
-        mainPnl.add(controlPnl, grid);
+        mainPnl.add(controlPnl, BorderLayout.SOUTH);
 
         add(mainPnl, BorderLayout.CENTER);
         setTitle("Pizza Order");
@@ -146,11 +135,13 @@ public class PizzaGUIFrame extends JFrame {
         controlPnl.setBorder(new TitledBorder(new EtchedBorder(), "Controls"));
 
         displayOrderBtn = new JButton("Display Order");
+        displayOrderBtn.setFont(new Font("Arial", Font.BOLD, 22));
         displayOrderBtn.addActionListener(e -> {
             getOrder();
         });
 
         clearBtn = new JButton("Clear");
+        clearBtn.setFont(new Font("Arial", Font.BOLD, 22));
         clearBtn.addActionListener(e -> {
             orderTA.setText("");
             thinCrustRB.setSelected(false);
@@ -165,16 +156,24 @@ public class PizzaGUIFrame extends JFrame {
         });
 
         quitBtn = new JButton("Quit");
+        quitBtn.setFont(new Font("Arial", Font.BOLD, 22));
         quitBtn.addActionListener(e -> {
             quitPane = new JOptionPane();
-
+            int quit = JOptionPane.showConfirmDialog(null, "Do you want to quit?", "Quit", JOptionPane.YES_NO_OPTION);
+            if (quit == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
         });
+
+        controlPnl.add(displayOrderBtn);
+        controlPnl.add(clearBtn);
+        controlPnl.add(quitBtn);
     }
 
     private void getOrder(){
         String res = "Order Details\n";
         String getSize = "";
-        double sizePrice;
+        double sizePrice = 0.0;
         double toppingPrice = 0.0;
         double subTotal = sizePrice + toppingPrice;
         double tax = subTotal * .07;
@@ -193,7 +192,7 @@ public class PizzaGUIFrame extends JFrame {
 
         res += "Size: ";
         getSize = (String) pizzaSizeCB.getSelectedItem();
-        res += getSize + "\n"
+        res += getSize + "\n";
         sizePrice = switch (getSize) {
           case "Small" -> 8.00;
           case "Medium" -> 12.00;
