@@ -8,7 +8,7 @@ public class PizzaGUIFrame extends JFrame {
     JPanel crustPnl;
     JPanel sizePnl;
     JPanel toppingsPnl;
-    JPanel receiptPnl;
+    JPanel orderPnl;
     JPanel controlPnl;
 
     JRadioButton thinCrustRB;
@@ -30,6 +30,39 @@ public class PizzaGUIFrame extends JFrame {
     JButton quitBtn;
     JButton dispalyOrderBtn;
 
+    public PizzaGUIFrame() {
+        createCenterFrame();
+        setTitle("Pizza Order");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        mainPnl = new JPanel();
+
+    }
+
+    private void createCrustPanel() {
+
+    }
+
+    private void createSizePanel() {
+
+    }
+
+    private void createToppingsPanel() {
+
+    }
+
+    private void createOrderPanel() {
+
+    }
+
+    private void createControlPanel() {
+
+    }
+
+    private void getOrder() {
+
+    }
 
     private void createCenterFrame(){
         //screen dimensions
