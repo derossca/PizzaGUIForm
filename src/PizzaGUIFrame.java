@@ -176,9 +176,8 @@ public class PizzaGUIFrame extends JFrame {
         String getSize = "";
         double sizePrice = 0.0;
         double toppingPrice = 0.0;
-        double subTotal = sizePrice + toppingPrice;
-        double tax = subTotal * .07;
-        double total = subTotal + tax;
+
+        res += "==================================================\n";
 
         res += "Crust: ";
         if (thinCrustRB.isSelected()) {
@@ -189,7 +188,6 @@ public class PizzaGUIFrame extends JFrame {
             res += "Deepdish\n";
         }
 
-        res += "==================================================\n";
 
         res += "Size: ";
         getSize = (String) pizzaSizeCB.getSelectedItem();
@@ -201,43 +199,54 @@ public class PizzaGUIFrame extends JFrame {
           case "Super" -> 20.00;
           default -> 0;
         };
-        res += sizePrice + "\n";
+        res += "\t\t" + sizePrice + "\n";
 
         res += "Toppings:\n";
         if(sourWormsCB.isSelected()){
-            res += "\tSour\n";
-            toppingPrice = 1.00;
+            toppingPrice += 1.00;
+            res += "\tSour Worms\t" + 1.00 + "\n";
         }
 
         if (butterBeerCB.isSelected()){
-            res += "\tButterbeer\n";
-            toppingPrice = 1.00;
+            toppingPrice += 1.00;
+            res += "\tButterbeer\t" + 1.00 + "\n";
         }
 
         if (skittlesCB.isSelected()){
-            res += "\tSkittles\n";
-            toppingPrice = 1.00;
+            toppingPrice += 1.00;
+            res += "\tSkittles\t" + 1.00 + "\n";
         }
 
         if (zombieBrainsCB.isSelected()){
-            res += "\tZombie\n";
-            toppingPrice = 1.00;
+            toppingPrice += 1.00;
+            res += "\tZombie Brains\t" + 1.00 + "\n";
+
         }
 
         if (monsterGutsCB.isSelected()){
-            res += "\tMonster\n";
-            toppingPrice = 1.00;
+            toppingPrice += 1.00;
+            res += "\tMonster Guts\t" + 1.00 + "\n";
+
         }
 
         if (spidersCB.isSelected()){
-            res += "\tSpiders\n";
-            toppingPrice = 1.00;
+            toppingPrice += 1.00;
+            res += "\tSpiders\t" + 1.00 + "\n";
+
         }
 
-        res += "Sub-total: " + subTotal + "\n";
-        res += "Tax: " + tax + "\n";
+        double subTotal = sizePrice + toppingPrice;
+        String subTotalString = String.format("%.2f", subTotal);
+        double tax = subTotal * .07;
+        String taxString = String.format("%.2f", tax);
+        double total = subTotal + tax;
+        String totalString = String.format("%.2f", total);
+
+        res += "\n";
+        res += "Sub-total: \t\t" + subTotalString + "\n";
+        res += "Tax: \t\t" + taxString + "\n";
         res += "--------------------------------------------------\n";
-        res += "Total:" + total;
+        res += "Total: \t\t" + totalString;
         res += "\n";
         res += "==================================================\n";
 
