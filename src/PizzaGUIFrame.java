@@ -147,21 +147,40 @@ public class PizzaGUIFrame extends JFrame {
 
         displayOrderBtn = new JButton("Display Order");
         displayOrderBtn.addActionListener(e -> {
-
+            getOrder();
         });
 
         clearBtn = new JButton("Clear");
+        clearBtn.addActionListener(e -> {
+            orderTA.setText("");
+            thinCrustRB.setSelected(false);
+            regCrustRB.setSelected(false);
+            deepDishCrustRB.setSelected(false);
+            sourWormsCB.setSelected(false);
+            butterBeerCB.setSelected(false);
+            skittlesCB.setSelected(false);
+            zombieBrainsCB.setSelected(false);
+            monsterGutsCB.setSelected(false);
+            spidersCB.setSelected(false);
+        });
+
         quitBtn = new JButton("Quit");
+        quitBtn.addActionListener(e -> {
+            quitPane = new JOptionPane();
+
+        });
     }
 
     private void getOrder(){
-        String res = "";
-        double crustPrice;
+        String res = "Order Details\n";
+        String getSize = "";
         double sizePrice;
-        double toppingPrice;
-        double subTotal;
-        double total;
+        double toppingPrice = 0.0;
+        double subTotal = sizePrice + toppingPrice;
+        double tax = subTotal * .07;
+        double total = subTotal + tax;
 
+        res += "Crust: ";
         if (thinCrustRB.isSelected()) {
             res += "Thin\n";
         } else if (regCrustRB.isSelected()) {
@@ -169,6 +188,60 @@ public class PizzaGUIFrame extends JFrame {
         } else {
             res += "Deepdish\n";
         }
+
+        res += "==================================================\n";
+
+        res += "Size: ";
+        getSize = (String) pizzaSizeCB.getSelectedItem();
+        res += getSize + "\n"
+        sizePrice = switch (getSize) {
+          case "Small" -> 8.00;
+          case "Medium" -> 12.00;
+          case "Large" -> 16.00;
+          case "Super" -> 20.00;
+          default -> 0;
+        };
+        res += sizePrice + "\n";
+
+        res += "Toppings:\n";
+        if(sourWormsCB.isSelected()){
+            res += "\tSour\n";
+            toppingPrice = 1.00;
+        }
+
+        if (butterBeerCB.isSelected()){
+            res += "\tButterbeer\n";
+            toppingPrice = 1.00;
+        }
+
+        if (skittlesCB.isSelected()){
+            res += "\tSkittles\n";
+            toppingPrice = 1.00;
+        }
+
+        if (zombieBrainsCB.isSelected()){
+            res += "\tZombie\n";
+            toppingPrice = 1.00;
+        }
+
+        if (monsterGutsCB.isSelected()){
+            res += "\tMonster\n";
+            toppingPrice = 1.00;
+        }
+
+        if (spidersCB.isSelected()){
+            res += "\tSpiders\n";
+            toppingPrice = 1.00;
+        }
+
+        res += "Sub-total: " + subTotal + "\n";
+        res += "Tax: " + tax + "\n";
+        res += "--------------------------------------------------\n";
+        res += "Total:" + total;
+        res += "\n";
+        res += "==================================================\n";
+
+        orderTA.setText(res);
     }
 
     private void createCenterFrame(){
