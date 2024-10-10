@@ -154,6 +154,22 @@ public class PizzaGUIFrame extends JFrame {
         quitBtn = new JButton("Quit");
     }
 
+    private void getOrder(){
+        String res = "";
+        double crustPrice;
+        double sizePrice;
+        double toppingPrice;
+        double subTotal;
+        double total;
+
+        if (thinCrustRB.isSelected()) {
+            res += "Thin\n";
+        } else if (regCrustRB.isSelected()) {
+            res += "Regular\n";
+        } else {
+            res += "Deepdish\n";
+        }
+    }
 
     private void createCenterFrame(){
         //screen dimensions
