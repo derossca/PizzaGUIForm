@@ -113,14 +113,37 @@ public class PizzaGUIFrame extends JFrame {
     }
 
     private void createToppingsPanel() {
+        toppingsPnl = new JPanel();
+        toppingsPnl.setBorder(new TitledBorder(new EtchedBorder(), "Toppings"));
 
+        sourWormsCB = new JCheckBox();
+        butterBeerCB = new JCheckBox();
+        skittlesCB = new JCheckBox();
+        zombieBrainsCB = new JCheckBox();
+        monsterGutsCB = new JCheckBox();
+        spidersCB = new JCheckBox();
+
+        toppingsPnl.add(sourWormsCB);
+        toppingsPnl.add(butterBeerCB);
+        toppingsPnl.add(skittlesCB);
+        toppingsPnl.add(zombieBrainsCB);
+        toppingsPnl.add(monsterGutsCB);
+        toppingsPnl.add(spidersCB);
     }
 
     private void createOrderPanel() {
+        orderPnl = new JPanel();
+        orderPnl.setBorder(new TitledBorder(new EtchedBorder(), "Order"));
 
+        orderTA = new JTextArea();
+
+        orderPnl.add(orderTA);
     }
 
     private void createControlPanel() {
+        controlPnl = new JPanel();
+        controlPnl.setBorder(new TitledBorder(new EtchedBorder(), "Controls"));
+
 
     }
 
