@@ -181,15 +181,15 @@ public class PizzaGUIFrame extends JFrame {
 
         res += "Crust: ";
         if (thinCrustRB.isSelected()) {
-            res += "Thin\n";
+            res += "\tThin\n";
         } else if (regCrustRB.isSelected()) {
-            res += "Regular\n";
+            res += "\tRegular\n";
         } else {
-            res += "Deepdish\n";
+            res += "\tDeepdish\n";
         }
 
 
-        res += "Size: ";
+        res += "Size: \t";
         getSize = (String) pizzaSizeCB.getSelectedItem();
         res += getSize + "\n";
         sizePrice = switch (getSize) {
